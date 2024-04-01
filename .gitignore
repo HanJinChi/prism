@@ -19,7 +19,6 @@
 #                  #
 ####################
 
-Makefile
 Makefile.in
 
 
@@ -97,3 +96,4 @@ Makefile.in
 *.exe
 *.out
 *.app
+
