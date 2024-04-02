@@ -97,3 +97,4 @@ Makefile.in
 *.out
 *.app
 
+*.gz
