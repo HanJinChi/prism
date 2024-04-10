@@ -30,7 +30,7 @@ TCxtGenerator genTCxt;
 std::mutex gMtx;
 ThreadStatMap allThreadsStats;
 SpawnList threadSpawns;
-ThreadList newThreadsInOrder;
+ThreadList newThreadsInOrder; // std::vector<TID>;
 BarrierList barrierParticipants;
 }; //end namespace
 

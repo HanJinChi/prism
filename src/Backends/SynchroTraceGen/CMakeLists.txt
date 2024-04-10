@@ -1,6 +1,7 @@
 # required CapnProto
 include(GNUInstallDirs)
 set(CAPNPROTO_PATH ${SRC_BACKENDS}/SynchroTraceGen)
+add_compile_options(-O0 -g)
 execute_process(
 	COMMAND git submodule update --init ${CAPNPROTO_PATH}/capnproto
 	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})

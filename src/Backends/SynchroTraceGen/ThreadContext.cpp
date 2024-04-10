@@ -58,7 +58,7 @@ auto ThreadContextCompressed::onFlop() -> void
 auto ThreadContextCompressed::onRead(Addr start, Addr bytes) -> void
 {
     bool isCommEdge = false;
-    printf("%d 0 %lu\n", tid, start);
+    //printf("%d 0 %lu\n", tid, start);
     /* Each byte of the read may have been touched by a different thread,
      * so check the reader/writer pair for each byte */
     for (Addr i = 0; i < bytes; ++i)
@@ -117,7 +117,7 @@ auto ThreadContextCompressed::onWrite(Addr start, Addr bytes) -> void
 {
     stComp.incWrites();
     stComp.updateWrites(start, bytes);
-    printf("%d 1 %lu\n", tid, start);
+    //printf("%d 1 %lu\n", tid, start);
     try
     {
         shadow.updateWriter(start, bytes, tid, events);
@@ -272,7 +272,7 @@ auto ThreadContextUncompressed::onRead(Addr start, Addr bytes) -> void
     bool isCommEdge = false;
     TID producerTID{0};
     EID producerEID{0};
-    printf("%d 0 %lu\n", tid, start);
+    //printf("%d 0 %lu\n", tid, start);
     for (Addr i = 0; i < bytes; ++i)
     {
         Addr addr = start + i;
@@ -311,7 +311,7 @@ auto ThreadContextUncompressed::onRead(Addr start, Addr bytes) -> void
 auto ThreadContextUncompressed::onWrite(Addr start, Addr bytes) -> void
 {
     compFlush(STCompEventUncompressed::MemType::WRITE, start, start+bytes-1);
-    printf("%d 1 %lu\n", tid, start);
+    //printf("%d 1 %lu\n", tid, start);
     try
     {
         shadow.updateWriter(start, bytes, tid, events);

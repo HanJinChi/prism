@@ -13,7 +13,7 @@ ALL = test
 
 EXE = $(WORK_DIR)/test/$(ALL).out
 
-ARGS = --backend=stgen --executable=$(EXE)
+ARGS = --backend=stgen -ltextv2 -c1 --executable=$(EXE) 
 
 CSRCS = $(shell find $(abspath ./src) -name "*.c" -or -name "*.cc" -or -name "*.cpp")
 
@@ -21,7 +21,7 @@ $(shell mkdir -p $(BUILD_DIR))
 
 BIN = $(BUILD_DIR)/bin/prism 
 
-PRSIM_EXEC := $(BIN) $(ARGS) > $(ALL).txt
+PRSIM_EXEC := $(BIN) $(ARGS) 
 
 
 $(BIN): $(CSRCS)
@@ -33,6 +33,9 @@ default: $(BIN)
 
 run: $(TEST_OBJS) $(BIN)
 	$(PRSIM_EXEC)
+
+gdb: $(TEST_OBJS) $(BIN)
+	gdb --args $(BIN) $(ARGS) 
 
 clean:
 	rm -rf $(BUILD_DIR)

@@ -99,3 +99,4 @@ Makefile.in
 
 *.gz
 *.txt
+.vscode/
